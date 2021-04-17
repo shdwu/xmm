@@ -9,39 +9,24 @@ class Step1Table extends React.Component {
 
   columns = [
     {
-      title: '昵称',
-      dataIndex: 'nick',
-      key: 'nick',
-    },
-    {
-      title: 'uuid',
-      dataIndex: 'uuid',
-      key: 'uuid',
-    },
-    {
       title: '姓名',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: '语音收益',
-      dataIndex: 'income',
-      key: 'income',
+      title: '昵称',
+      dataIndex: 'nick',
+      key: 'nick',
     },
     {
-      title: '星挑战+工会奖励',
-      dataIndex: 'reward',
-      key: 'reward',
-    },
-    {
-      title: '实发',
-      dataIndex: 'factIncome',
-      key: 'factIncome',
-    },
-    {
-      title: '注册手机号',
+      title: '手机号',
       dataIndex: 'phone',
       key: 'phone',
+    },
+    {
+      title: '手机号',
+      dataIndex: 'maskPhone',
+      key: 'maskPhone',
     },
     {
       title: '支付宝号',

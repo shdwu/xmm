@@ -1,6 +1,6 @@
 import { Upload } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import Step1Table from './Step1Table';
+import Step2Table from './Step2Table';
 import xlsx from 'node-xlsx';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,16 +17,13 @@ class Step1 extends React.Component {
     fileReader.onload = ()=>{
       var fileBuffer = new Uint8Array(fileReader.result);
       var workbook = xlsx.parse(fileBuffer, {type: 'array'})
-      const data = workbook[0].data.filter(it => it.length >= 8 && it[0] !== '昵称').map(it => {
+      const data = workbook[0].data.filter(it => it.length >= 5 && it[0] && it[0] !== '').map(it => {
         return {
-          nick: it[0],
-          uuid:it[1],
-          name:it[2],
-          income:it[3],
-          reward:it[4],
-          factIncome:it[5],
-          phone:it[6],
-          zhifubao:it[7]
+          name:it[0],
+          nick: it[1],
+          phone:it[2],
+          maskPhone:it[3],
+          zhifubao:it[4]
         }
       })
       this.props.setData(data);
@@ -52,7 +49,7 @@ class Step1 extends React.Component {
           </p>
           <p className="ant-upload-text">点击或者将文件拖拽到此上传</p>
         </Dragger>
-        <Step1Table data={this.props.data} removeItem={this.removeItem} />
+        <Step2Table data={this.props.data} removeItem={this.removeItem} />
       </>
     )
   }
