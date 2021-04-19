@@ -25,8 +25,7 @@ class Step1 extends React.Component {
           income:it[3],
           reward:it[4],
           factIncome:it[5],
-          phone:it[6],
-          zhifubao:it[7]
+          maskPhone:it[6],
         }
       })
       this.props.setData(data);

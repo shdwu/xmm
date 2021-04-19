@@ -9,7 +9,7 @@ const { Dragger } = Upload;
 
 
 
-class Step1 extends React.Component {
+class Step2 extends React.Component {
 
   parseFile = (file) => {
     const fileReader = new FileReader();
@@ -55,10 +55,10 @@ class Step1 extends React.Component {
   }
 }
 
-Step1.propTypes = {
+Step2.propTypes = {
   data: PropTypes.array.isRequired,
   setData: PropTypes.func.isRequired
 }
 
 
-export default Step1;
+export default Step2;
