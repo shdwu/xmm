@@ -40,6 +40,11 @@ class Step3Table extends React.Component {
     },
     {
       title: '注册手机号',
+      dataIndex: 'maskPhone',
+      key: 'maskPhone',
+    },
+    {
+      title: '手机号',
       dataIndex: 'phone',
       key: 'phone',
     },

@@ -39,6 +39,11 @@ class Step1Table extends React.Component {
       key: 'factIncome',
     },
     {
+      title: '电话号码',
+      dataIndex: 'maskPhone',
+      key: 'maskPhone',
+    },
+    {
       title: 'Action',
       key: 'action',
       // eslint-disable-next-line react/display-name

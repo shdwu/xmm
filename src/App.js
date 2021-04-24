@@ -4,6 +4,7 @@ import { Steps, Button } from 'antd';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+import xlsx from 'node-xlsx';
 
 const { Step } = Steps;
 
@@ -29,6 +30,9 @@ function App() {
   ];
 
   const next = () => {
+    if (current === 1) {
+      mergeData();
+    }
     setCurrent(current + 1);
   };
 
@@ -40,12 +44,49 @@ function App() {
     const mergeList = [];
     step1Data.forEach(it => {
       const mergeData = {...it};
-      const finded = step2Data.find(it.name)
-      mergeData.phone = finded.phone
-      mergeData.zhifubao = finded.zhifubao
-      mergeList.push(mergeData);
+      const finded = step2Data.find(fe => fe.name && it.name && fe.name.trim() === it.name.trim())
+      if (finded) {
+        mergeData.phone = finded.phone
+        mergeData.zhifubao = finded.zhifubao
+        mergeList.push(mergeData);
+      }
     })
     setStep3Data(mergeList);
+  }
+
+  const downloadXlsx = () => {
+    const data = [['昵称', 'uuid', '姓名', '语音收益', '星挑战+公会奖励',	'实发', '注册手机号','手机号', '支付宝号']];
+    step3Data.forEach(it => {
+      data.push([it.nick, it.uuid, it.name, it.reward, it.reward, it.factIncome,it.maskPhone, it.phone, it.zhifubao])
+    })
+    var buffer = xlsx.build([{name: "mySheetName", data: data}]);
+    saveExcelFiles(buffer, 'download.xlsx');
+  }
+
+  const saveExcelFiles = ( data, fileName, blobType = "application/vnd.ms-excel") => {
+    if (!data) {
+        return;
+    }
+    let blob = new Blob([data], {
+        type: blobType
+    });
+    downloadFile(blob, fileName);
+  }
+
+  const downloadFile = (stream, fileName, garbledCode = false) => {
+    if ('msSaveOrOpenBlob' in navigator) {
+      window.navigator.msSaveOrOpenBlob(stream, fileName)
+      return
+    }
+    if (fileName.endsWith('.csv') && garbledCode) stream = '\ufeff' + stream
+    let url = window.URL.createObjectURL(new Blob([stream]))
+    let link = document.createElement('a')
+    link.style.display = 'none'
+    link.href = url
+    link.setAttribute('download', fileName)
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
   }
 
   return (
@@ -68,8 +109,8 @@ function App() {
           </Button>
         )}
         {current === steps.length - 1 && (
-          <Button type="primary" onClick={() => mergeData()}>
-            完成
+          <Button type="primary" onClick={() => downloadXlsx()}>
+            下载
           </Button>
         )}
       </div>
