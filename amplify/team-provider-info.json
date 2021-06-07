@@ -1,4 +1,17 @@
 {
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-xmm-dev-80709-authRole",
+      "UnauthRoleArn": "arn:aws:iam::836436619969:role/amplify-xmm-dev-80709-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::836436619969:role/amplify-xmm-dev-80709-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-xmm-dev-80709-deployment",
+      "UnauthRoleName": "amplify-xmm-dev-80709-unauthRole",
+      "StackName": "amplify-xmm-dev-80709",
+      "StackId": "arn:aws:cloudformation:us-east-1:836436619969:stack/amplify-xmm-dev-80709/5b9c4920-c767-11eb-9053-12e26def3eab",
+      "AmplifyAppId": "d1ehqr9cjhv9jh"
+    }
+  },
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-amplifya833a618b52d4-staging-120848-authRole",
